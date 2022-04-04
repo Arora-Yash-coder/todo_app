@@ -46,7 +46,6 @@ class _HomeState extends State<Home> {
               style: TextStyle(color: Colors.pinkAccent),
             ),
             content: TextField(
-              maxLength: 40,
               style: const TextStyle(color: Colors.pinkAccent),
               controller: _textFieldController,
               decoration: const InputDecoration(

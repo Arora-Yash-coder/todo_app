@@ -30,7 +30,9 @@ class _TaskItemState extends State<TaskItem> {
           value: widget.state,
           activeColor: Colors.pinkAccent,
         ),
-        Text(widget.label),
+        Flexible(
+          child: Text(widget.label),
+        ),
         IconButton(
           color: Colors.pinkAccent,
           splashColor: Colors.pinkAccent.shade100,
