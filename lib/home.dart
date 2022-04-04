@@ -29,7 +29,9 @@ class _HomeState extends State<Home> {
         checker = true;
       });
     } else {
-      checker = false;
+      setState(() {
+        checker = false;
+      });
     }
   }
 
