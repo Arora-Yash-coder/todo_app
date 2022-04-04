@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class TaskItem extends StatefulWidget {
+  // Task to do
   final String label;
+  // State of the checkBox
   bool state;
+  // Index of the TaskItem in the list
   int index;
+  // Delete the Task Function
   final Function callback;
   TaskItem({
     Key? key,

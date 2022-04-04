@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Progress extends StatelessWidget {
+  // Value shown in the progress bar
   final double value;
   const Progress({
     Key? key,

@@ -12,10 +12,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // Value shown in the progress bar
   double progressValue = 0;
+  // Checker for if list is empty or not
   bool checker = false;
+  // List of all the task
   List<TaskItem> list = [];
 
+  @override
+  void initState() {
+    super.initState();
+    // Timer for the progress bar checker
+    Timer.periodic(
+        const Duration(milliseconds: 10), ((timer) => progressChecker()));
+  }
+
+  // Updates the progress bar
   void progressChecker() {
     num temp = 0;
     if (list.isNotEmpty) {
@@ -35,6 +47,7 @@ class _HomeState extends State<Home> {
     }
   }
 
+  // Adds a new task
   void addTask() {
     TextEditingController _textFieldController = TextEditingController();
     showDialog(
@@ -90,13 +103,7 @@ class _HomeState extends State<Home> {
         });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Timer.periodic(
-        const Duration(milliseconds: 10), ((timer) => progressChecker()));
-  }
-
+  // Deletes the needed task
   void callback(taskIndex) {
     setState(() {
       list.removeAt(taskIndex);
@@ -123,12 +130,15 @@ class _HomeState extends State<Home> {
               ? Progress(
                   value: progressValue,
                 )
-              : const Text(""),
+              : const SizedBox.shrink(),
           Expanded(
             flex: 9,
             child: Center(
-              child: Column(
-                children: list,
+              child: ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  return list[index];
+                },
               ),
             ),
           ),
